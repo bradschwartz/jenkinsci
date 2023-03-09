@@ -3,6 +3,10 @@
 Both companies I've worked for have used Jenkins, to varying levels of success.
 Saw some patterns I really liked, so wanted to replicate them here.
 
+A large portion of this is to see if I can, and to be able to run Jenkins
+locally in a way that could potentially be useful by either running Jenkinsfiles
+or just having access to the exact same config that would be in the cloud.
+
 - [x] Configuration as Code
 - [x] Plugins installed in custom controller
   - No installations on bootup
