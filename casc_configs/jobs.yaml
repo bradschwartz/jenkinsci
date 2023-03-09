@@ -20,5 +20,25 @@ jobs:
             branches("main|PR-\\d+")
             strategy("INDEXING")
           }
+          folderLibraries {
+            libraries {
+              libraryConfiguration {
+                name("jenkins-infra/pipeline-library")
+                defaultVersion("master")
+                implicit(true)
+                includeInChangesets(false)
+                retriever {
+                  modernSCM {
+                    scm {
+                      git {
+                        credentialsId("")
+                        remote("https://github.com/jenkins-infra/pipeline-library")
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }

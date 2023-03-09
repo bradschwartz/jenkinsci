@@ -15,9 +15,17 @@ or just having access to the exact same config that would be in the cloud.
     global Jenkinsfile usage. [Cloudbees Blogpost](https://www.cloudbees.com/blog/ensuring-corporate-standards-pipelines-custom-marker-files)
     - Looks like this cloudbees blogpost is only relevant to their enterprise platform, which is fairly lame. For now we'll be satisfied with just the organization folder with Git
   - Local docs are always up to date: http://localhost:8080/plugin/job-dsl/api-viewer/index.html#path/organizationFolder
-- [ ] The only thing that can cause downtime is changing the controller image. Everything
+- [x] The only thing that can cause downtime is changing the controller image. Everything
       else should either be library changes or worker changes. The point isn't
       to be perfect, but to be minimal and stable.
+
+## Running
+
+Works locally with `make run`, although no credentials are used for any GitHub
+actions. This is causes excessive rate-limiting, so a PAT or token should
+be generated and put in the [credentials](./casc_configs/credentials.yaml) file
+and all `credentialsId("")` updated to use it properly. Should net ~5000 API
+calls per hour.
 
 ## References
 
