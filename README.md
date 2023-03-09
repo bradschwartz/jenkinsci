@@ -22,3 +22,4 @@ Saw some patterns I really liked, so wanted to replicate them here.
 - https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
 	- Used the helm chart docs for starter plugins
 - https://www.jenkins.io/doc/book/security/access-control/disable/
+- https://github.com/jenkinsci/remote-file-plugin

@@ -1,0 +1,45 @@
+jobs:
+  - script: |
+      organizationFolder("bradschwartz") {
+        organizations {
+          github {
+            credentialsId("")
+            repoOwner("bradschwartz")
+
+            projectFactories {
+              remoteJenkinsFileWorkflowMultiBranchProjectFactory {
+                localMarker("README.md")
+
+                remoteJenkinsFileSCM {
+                  gitSCM {
+                    userRemoteConfigs {
+                      userRemoteConfig {
+                        // Specify the URL or path of the git repository.
+                        url("https://github.com/bradschwartz/jenkinsci")
+                        name("")
+                        refspec("")
+                        // Credential used to check out sources.
+                        credentialsId("")
+                      }
+                    }
+                    branches {}
+
+                    browser {}
+                    gitTool("")
+                  }
+                }
+                matchBranches(false)
+                lookupInParameters(false)
+                // Fallback Branch field for Match Branches.
+                fallbackBranch("main")
+              }
+            }
+          }
+        }
+        properties {
+          suppressFolderAutomaticTriggering {
+            branches("main|PR-\\d+")
+            strategy("INDEXING")
+          }
+        }
+      }
