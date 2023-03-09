@@ -1,4 +1,6 @@
 jobs:
+  # Basic config API here: https://jenkinsci.github.io/job-dsl-plugin/#
+  # Most of the time you should look at your own live instance due to runtime introspection
   - script: |
       organizationFolder("bradschwartz") {
         organizations {
@@ -6,32 +8,9 @@ jobs:
             credentialsId("")
             repoOwner("bradschwartz")
 
-            projectFactories {
-              remoteJenkinsFileWorkflowMultiBranchProjectFactory {
-                localMarker("README.md")
-
-                remoteJenkinsFileSCM {
-                  gitSCM {
-                    userRemoteConfigs {
-                      userRemoteConfig {
-                        // Specify the URL or path of the git repository.
-                        url("https://github.com/bradschwartz/jenkinsci")
-                        name("")
-                        refspec("")
-                        // Credential used to check out sources.
-                        credentialsId("")
-                      }
-                    }
-                    branches {}
-
-                    browser {}
-                    gitTool("")
-                  }
-                }
-                matchBranches(false)
-                lookupInParameters(false)
-                // Fallback Branch field for Match Branches.
-                fallbackBranch("main")
+            traits {
+              gitHubBranchDiscovery {
+                strategyId(1)
               }
             }
           }
