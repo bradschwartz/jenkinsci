@@ -12,3 +12,12 @@ Saw some patterns I really liked, so wanted to replicate them here.
 - [ ] The only thing that can cause downtime is changing the controller image. Everything
       else should either be library changes or worker changes. The point isn't
       to be perfect, but to be minimal and stable.
+
+## References
+
+- https://github.com/jenkinsci/docker/blob/master/README.md
+- Docker Hub
+  - [jenkins/jenkins](https://hub.docker.com/r/jenkins/jenkins)
+- https://plugins.jenkins.io/configuration-as-code/
+- https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
+	- Used the helm chart docs for starter plugins
