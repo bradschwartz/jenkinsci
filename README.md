@@ -3,7 +3,7 @@
 Both companies I've worked for have used Jenkins, to varying levels of success.
 Saw some patterns I really liked, so wanted to replicate them here.
 
-- [ ] Configuration as Code
+- [x] Configuration as Code
 - [ ] Plugins installed in custom controller
   - No installations on bootup
 - [ ] GitHub Organization folder
@@ -21,3 +21,4 @@ Saw some patterns I really liked, so wanted to replicate them here.
 - https://plugins.jenkins.io/configuration-as-code/
 - https://github.com/jenkinsci/helm-charts/tree/main/charts/jenkins
 	- Used the helm chart docs for starter plugins
+- https://www.jenkins.io/doc/book/security/access-control/disable/
