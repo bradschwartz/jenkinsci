@@ -17,7 +17,10 @@ orgs for now.
 
 ```bash
 ## Required
-GITHUB_ORG # Required for jobs-dsl to startup properly, is name of the GitHub Organization
+
+# Required for jobs-dsl to startup properly, is name of the GitHub Organization
+# Can be multiple space-separated orgs to create multiple organization folders
+GITHUB_ORG
 
 ## Optional
 GITHUB_CRED_ID # Set credentialsId used to pull from GitHub.

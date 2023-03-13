@@ -2,37 +2,39 @@ jobs:
   # Basic config API here: https://jenkinsci.github.io/job-dsl-plugin/#
   # Most of the time you should look at your own live instance due to runtime introspection
   - script: |
-      organizationFolder("${GITHUB_ORG}") {
-        organizations {
-          github {
-            credentialsId("${GITHUB_CRED_ID}")
-            repoOwner("${GITHUB_ORG}")
+      "${GITHUB_ORG}".tokenize().forEach { org ->
+        organizationFolder(org) {
+          organizations {
+            github {
+              credentialsId("${GITHUB_CRED_ID}")
+              repoOwner(org)
 
-            traits {
-              gitHubBranchDiscovery {
-                strategyId(1)
+              traits {
+                gitHubBranchDiscovery {
+                  strategyId(1)
+                }
               }
             }
           }
-        }
-        properties {
-          suppressFolderAutomaticTriggering {
-            branches("main|PR-\\d+")
-            strategy("INDEXING")
-          }
-          folderLibraries {
-            libraries {
-              libraryConfiguration {
-                name("jenkins-infra/pipeline-library")
-                defaultVersion("master")
-                implicit(true)
-                includeInChangesets(false)
-                retriever {
-                  modernSCM {
-                    scm {
-                      git {
-                        credentialsId("${GITHUB_CRED_ID}")
-                        remote("https://github.com/jenkins-infra/pipeline-library")
+          properties {
+            suppressFolderAutomaticTriggering {
+              branches("main|PR-\\d+")
+              strategy("INDEXING")
+            }
+            folderLibraries {
+              libraries {
+                libraryConfiguration {
+                  name("jenkins-infra/pipeline-library")
+                  defaultVersion("master")
+                  implicit(true)
+                  includeInChangesets(false)
+                  retriever {
+                    modernSCM {
+                      scm {
+                        git {
+                          credentialsId("${GITHUB_CRED_ID}")
+                          remote("https://github.com/jenkins-infra/pipeline-library")
+                        }
                       }
                     }
                   }
