@@ -2,11 +2,11 @@ jobs:
   # Basic config API here: https://jenkinsci.github.io/job-dsl-plugin/#
   # Most of the time you should look at your own live instance due to runtime introspection
   - script: |
-      organizationFolder("bradschwartz") {
+      organizationFolder("${GITHUB_ORG}") {
         organizations {
           github {
-            credentialsId("")
-            repoOwner("bradschwartz")
+            credentialsId("${GITHUB_CRED_ID}")
+            repoOwner("${GITHUB_ORG}")
 
             traits {
               gitHubBranchDiscovery {
@@ -31,7 +31,7 @@ jobs:
                   modernSCM {
                     scm {
                       git {
-                        credentialsId("")
+                        credentialsId("${GITHUB_CRED_ID}")
                         remote("https://github.com/jenkins-infra/pipeline-library")
                       }
                     }
